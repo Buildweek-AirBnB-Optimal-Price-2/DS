@@ -10,6 +10,7 @@ pylint-flask = "*"
 pycodestyle = "*"
 toml = "*"
 autopep8 = "*"
+ipykernel = "*"
 
 [packages]
 flask = "*"

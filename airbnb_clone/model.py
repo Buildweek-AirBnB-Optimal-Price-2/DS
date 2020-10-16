@@ -11,6 +11,6 @@ def predict_price(rental_parameters):
         float: Predicted price of rental property
     """
 
-    predicted_price = len(rental_parameters)  # PLACEHOLDER
+    predicted_price = len(str(rental_parameters))  # PLACEHOLDER
 
     return predicted_price

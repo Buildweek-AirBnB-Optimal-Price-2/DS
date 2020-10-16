@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+jupyter = "*"
+pylint = "*"
+pylint-flask = "*"
+pycodestyle = "*"
+toml = "*"
+autopep8 = "*"
+ipykernel = "*"
+
+[packages]
+flask = "*"
+flask-sqlalchemy = "*"
+python-dotenv = "*"
+sklearn = "*"
+pandas = "*"
+
+[requires]
+python_version = "3.8"

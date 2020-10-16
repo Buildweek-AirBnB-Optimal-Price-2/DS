@@ -15,11 +15,14 @@ def create_app():
     def root():
         return render_template('index.html', title='Home')
 
-    @app.route('/predict', methods=['POST'])
+    @app.route('/predict', methods=['GET','POST'])
     def predict():
+        
+        req = request.json.get("parameters")
+        json_format = json.dumps(req)
+        df = pd.read_json(json_format)
 
-        features = [request.form.values()]
-        prediction = predict_price(features)
+        prediction = jsonify(predict_price(df))
 
         return render_template('index.html', prediction_text='Predicted price is ${}'.format(prediction))
 

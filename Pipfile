@@ -17,6 +17,7 @@ flask = "*"
 flask-sqlalchemy = "*"
 python-dotenv = "*"
 sklearn = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.8"

@@ -11,6 +11,9 @@ def predict_price(rental_parameters):
         float: Predicted price of rental property
     """
 
-    predicted_price = len(str(rental_parameters))  # PLACEHOLDER
+    params = rental_parameters
+    if len(params) > 0:
+        return "Success"
+    else:
+        return "Failure" # PLACEHOLDER
 
-    return predicted_price

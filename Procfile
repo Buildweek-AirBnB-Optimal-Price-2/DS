@@ -1,2 +1,1 @@
-web: gunicorn app:app -t 120
-heroku ps:scale web=1
+web: gunicorn airbnb_clone:APP -t 120

@@ -33,6 +33,6 @@ def create_app():
 
         prediction = predict_price(df)
 
-        return render_template('index.html', prediction_text='Predicted price is ${}'.format(prediction))
+        return (jsonify(prediction))
 
     return app

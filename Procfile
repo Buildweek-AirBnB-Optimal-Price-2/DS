@@ -1,0 +1,1 @@
+web:gunicorn airbnb_clone:app -t 120

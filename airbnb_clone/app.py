@@ -17,12 +17,11 @@ def create_app():
     def root():
         return render_template('index.html', title='Home')
 
-    @app.route('/predict', methods=['GET','POST'])
+    @app.route('/predict', methods=['GET', 'POST'])
     def predict():
-        
         """ features = [request.form.values()]
         json_dict = {}
-        
+
         json_dict['latitude'] = features[0]
         json_dict['longitude'] = features[1]
         json_dict['min_rooms'] = features[2]

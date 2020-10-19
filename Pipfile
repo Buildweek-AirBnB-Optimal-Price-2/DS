@@ -19,6 +19,7 @@ python-dotenv = "*"
 sklearn = "*"
 pandas = "*"
 gunicorn = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.8"

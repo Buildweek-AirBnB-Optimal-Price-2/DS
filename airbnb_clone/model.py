@@ -19,6 +19,7 @@ def predict_price(model, rental_parameters):
         float: Predicted price of rental property
     """
 
+    model = model
     #                    [[lon,                  lat,                  min_nights]]
     return model.predict([[rental_parameters[0], rental_parameters[1], rental_parameters[2]]])
 

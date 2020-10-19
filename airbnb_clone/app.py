@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from .model import predict_price
+import flask
 import json
 import pandas as pd
 
@@ -19,20 +20,15 @@ def create_app():
 
     @app.route('/predict', methods=['GET', 'POST'])
     def predict():
-        """ features = [request.form.values()]
-        json_dict = {}
 
-        json_dict['latitude'] = features[0]
-        json_dict['longitude'] = features[1]
-        json_dict['min_rooms'] = features[2]
+        json_data = flask.request.json
+        json_format = json.dumps(json_data)
+        df = pd.read_json(json_format, 'index')
+        # print(df)
 
-        req = jsonify(json_dict) """
-        req = request.json.get("parameters")
-        json_format = json.dumps(req)
-        df = pd.read_json(json_format)
+        #prediction = predict_price(df)
+        # print(prediction)
 
-        prediction = predict_price(df)
-
-        return "Success!"
+        return flask.request.json
 
     return app

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from .model import predict_price
+import flask
 import json
 import pandas as pd
 
@@ -27,12 +28,13 @@ def create_app():
         json_dict['min_rooms'] = features[2]
 
         req = jsonify(json_dict) """
-        req = request.json.get("parameters")
-        json_format = json.dumps(req)
-        df = pd.read_json(json_format)
+        #json_data = flask.request.json
+        #json_format = json.dumps(json_data)
+        #df = pd.read_json(json_format)
 
-        prediction = predict_price(df)
+        #prediction = predict_price(df)
+        #print(prediction)
 
-        return "Success!"
+        return flask.request.json
 
     return app

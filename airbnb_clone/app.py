@@ -20,20 +20,14 @@ def create_app():
 
     @app.route('/predict', methods=['GET', 'POST'])
     def predict():
-        """ features = [request.form.values()]
-        json_dict = {}
 
-        json_dict['latitude'] = features[0]
-        json_dict['longitude'] = features[1]
-        json_dict['min_rooms'] = features[2]
-
-        req = jsonify(json_dict) """
-        #json_data = flask.request.json
-        #json_format = json.dumps(json_data)
-        #df = pd.read_json(json_format)
+        json_data = flask.request.json
+        json_format = json.dumps(json_data)
+        df = pd.read_json(json_format, 'index')
+        # print(df)
 
         #prediction = predict_price(df)
-        #print(prediction)
+        # print(prediction)
 
         return flask.request.json
 

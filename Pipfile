@@ -20,6 +20,7 @@ sklearn = "*"
 pandas = "*"
 gunicorn = "*"
 numpy = "*"
+category-encoders = "*"
 
 [requires]
 python_version = "3.8"

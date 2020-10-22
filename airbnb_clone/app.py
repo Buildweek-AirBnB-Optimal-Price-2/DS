@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
 from .model import predict_price, train_model
 import flask
 import json
@@ -9,10 +8,6 @@ import pandas as pd
 def create_app():
     '''Create and configure an instance of our Flask application'''
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Users\\Luke Melto\\Documents\\GitHub\\\DS\\airbnb_clone\\airbnb_clone.sqlite3'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    DB = SQLAlchemy()
-    DB.init_app(app)  # Connect Flask app to SQLAlchemy DB
     model = train_model()
 
     @app.route('/')
@@ -28,9 +23,11 @@ def create_app():
         print(df)
 
         predict_parameters = []
-        predict_parameters.append(df.iloc[1, 0])
         predict_parameters.append(df.iloc[0, 0])
+        predict_parameters.append(df.iloc[1, 0])
         predict_parameters.append(df.iloc[2, 0])
+        predict_parameters.append(df.iloc[3, 0])
+        predict_parameters.append(df.iloc[4, 0])
 
         prediction = predict_price(model, predict_parameters)
         # print(prediction)

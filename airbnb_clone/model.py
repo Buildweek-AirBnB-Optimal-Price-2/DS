@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 import category_encoders as ce
-import tensorflow
+from tensorflow.keras.models import load_model
 import pickle
 
 # Loads transformation pipeline
@@ -11,7 +11,7 @@ pipeline = pickle.load(infile)
 infile.close()
 
 # Loads model
-model = tensorflow.keras.models.load_model(
+model = load_model(
     r'C:\\Users\\Luke Melto\\Documents\\GitHub\\DS\\airbnb_clone\\new model\\saved_model\\my_model')
 
 

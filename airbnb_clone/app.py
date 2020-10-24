@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from .model import predict_price, train_model
+from .model import predict_price
 import flask
 import json
 import pandas as pd
@@ -9,36 +8,22 @@ import pandas as pd
 def create_app():
     '''Create and configure an instance of our Flask application'''
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Users\\Luke Melto\\Documents\\GitHub\\\DS\\airbnb_clone\\airbnb_clone.sqlite3'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    DB = SQLAlchemy()
-    DB.init_app(app)  # Connect Flask app to SQLAlchemy DB
-    model = train_model()
 
     @app.route('/')
     def root():
-        return render_template('index.html', title='Home')
+        return 'Hello World!'
 
     @app.route('/predict', methods=['GET', 'POST'])
     def predict():
 
         json_data = flask.request.json
         json_format = json.dumps(json_data)
-        df = pd.read_json(json_format, 'index')
-        print(df)
+        df = pd.read_json(json_format, 'index').T
 
-        predict_parameters = []
-        predict_parameters.append(df.iloc[1, 0])
-        predict_parameters.append(df.iloc[0, 0])
-        predict_parameters.append(df.iloc[2, 0])
-
-        prediction = predict_price(model, predict_parameters)
-        # print(prediction)
+        prediction = predict_price(df)
 
         predict_dict = {}
         predict_dict['predicted_value'] = float(prediction[0][:])
-        print(prediction)
-        print(predict_dict)
         return jsonify(predict_dict)
 
     return app
